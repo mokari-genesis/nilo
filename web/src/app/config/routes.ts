@@ -9,4 +9,5 @@ export const ROUTES = {
   example: "/app/example",
   exampleDetail: (id: string) => `/app/example/${id}`,
   notFound: "*",
+  forgotPassword: "/forgot-password",
 } as const;
