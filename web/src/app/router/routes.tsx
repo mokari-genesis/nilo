@@ -8,6 +8,7 @@ import { ExampleListPage } from "@/features/example/pages/ExampleListPage";
 import { ExampleDetailPage } from "@/features/example/pages/ExampleDetailPage";
 import { NotFoundPage } from "@/app/layout/NotFoundPage";
 import { ErrorBoundaryFallback } from "@/app/layout/ErrorBoundaryFallback";
+import { ForgotPasswordPage } from "@/features/auth/pages/ForgotPasswordPage";
 
 export const router = createBrowserRouter([
   {
@@ -19,6 +20,10 @@ export const router = createBrowserRouter([
     element: <LoginPage />,
   },
   {
+    path: ROUTES.forgotPassword,
+    element: <ForgotPasswordPage />,
+  },
+  {
     path: ROUTES.app,
     element: (
       <ProtectedRoute>
@@ -27,8 +32,10 @@ export const router = createBrowserRouter([
     ),
     errorElement: <ErrorBoundaryFallback />,
     children: [
+
       { index: true, element: <Navigate to={ROUTES.dashboard} replace /> },
-      { path: "dashboard", element: <DashboardPage /> },
+      { path: ROUTES.dashboard, element: <DashboardPage /> },
+
       { path: "example", element: <ExampleListPage /> },
       { path: "example/:id", element: <ExampleDetailPage /> },
     ],
@@ -38,3 +45,4 @@ export const router = createBrowserRouter([
     element: <NotFoundPage />,
   },
 ]);
+
